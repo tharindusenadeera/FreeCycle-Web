@@ -1,0 +1,444 @@
+@font-face {
+    font-family: MavenPro-Bold;
+    src: url(../fonts/MavenPro-Bold.ttf);
+}
+
+@font-face {
+    font-family:MavenPro-Regular;
+    src: url(../fonts/MavenPro-Regular.ttf);
+}
+@font-face {
+    font-family: AbrilFatface-Regular;
+    src: url(../fonts/AbrilFatface-Regular.ttf);
+}
+
+/*............................main navigation styles start...................................*/
+.nav-bar {
+    width: 100%;
+    background: #007b9c;
+}
+.nav-container {
+    overflow: hidden;
+    margin: 0px auto;
+}
+.nav-menu {
+    display: none;
+}
+nav.nav-bar ul {
+    list-style: none;
+}
+.nav-list {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+}
+.nav-list li {
+    float: left;
+    width:20%;
+}
+.nav-list li a {
+    display: block;
+    color: #f9f9f9;
+    text-shadow: 1px 1px 3px rgba(150, 150, 150, 1);
+    padding: 10px 10px;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    font-family: MavenPro-Regular;
+    -webkit-transition:all 0.2s linear;
+    -moz-transition:all 0.2s linear;
+    -o-transition:all 0.2s linear;
+    transition:all 0.2s linear;
+}
+.nav-list li a:hover {
+    -webkit-filter: brightness(1.3);
+    font-size: 25px;
+}
+#tile1 {
+    background:#00ced7
+}
+#tile2 {
+    background:#00bbc3
+}
+#tile3 {
+    background:#00a8af
+}
+#tile4 {
+    background:#00959c
+}
+#tile5 {
+    background:#00889c
+}
+#tile6 {
+    background:#007b9c
+}
+#tile7 {
+    background:#006e9c
+}
+#tile8 {
+    background:#005c83
+}
+
+@media screen and (max-width: 480px) {
+     .nav-menu {
+        color: #fff;
+        float: left;
+        display: block;
+        padding: 10px 10px;
+        cursor: pointer;
+    }
+
+    .nav-list {
+        float: left;
+        width: 100%;
+
+    }
+
+    .nav-open {
+        height: auto
+    }
+
+    .nav-list li {
+        width: 100%
+    }
+
+    .nav-list li a {
+        text-align: left;
+    }
+
+    .nav-list li a:hover {
+        padding-left: 36%;
+        padding-top: 30px;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .nav-container,.container {
+        margin: 0% auto;
+    }
+    .nav-list li {
+        float: left;
+        width: 50%;
+    }
+    .nav-list li a:hover{
+        padding-right: 40%;
+        padding-top: 30px ;
+    }
+}
+/*............................main navigation styles end...................................*/
+/*............................index page styles start...................................*/
+.carousel-inner{
+    position: relative;
+}
+.carousel-inner .caro-text{
+    position: absolute;
+    bottom: 20%;
+    left: 33.33%;
+    color: #ffffff;
+    z-index: 10000;
+    font-family: Arsenal-Regular;
+}
+ .carousel-inner .caro-text h1 a{
+    color: #ffffff;
+    font-size: 45px;
+}
+
+ .item img{
+    filter: brightness(70%);
+}
+ .carousel-inner .caro-text button{
+    padding: 10px 20px;
+    border: none;
+    background: #204d74;
+    color: #ffffff;
+    font-family: Arsenal-Regular;
+    font-size: 20px;
+}
+ .carousel-inner .caro-text button:focus{
+    outline: none;
+}
+/*............................index page styles end...................................*/
+/*............................register page styles start...................................*/
+.register-form{
+    background: url("../images/Gradient-Blue-Color-and-Triangle-Polygon-Pattern-Background.jpg");
+    background-size: cover;
+    min-height: 500px;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    border-radius: 10px;
+    -webkit-box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    -moz-box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    font-family: MavenPro-Regular;
+}
+.register-form .input-field{
+    padding: 10px ;
+}
+.register-form input{
+    padding: 10px;
+    width: 65%;
+    border: none;
+    border-radius: 5px;
+}
+.main-reg-bg{
+    background: #668aa0;
+    min-height: 95vh;
+}
+h1,h2,h3,h4,h5{
+    color: #ffffff;
+    font-family: AbrilFatface-Regular;
+}
+.g-recaptcha {
+    transform: scale(1.08);
+    transform-origin: 0 0;
+    margin-left: 89px;
+}
+.main-reg-page button{
+    margin-top: 10px;
+    padding: 10px 10px;
+    background: #00889c;
+    border: none;
+    border-radius: 5px;
+    width: 65%;
+    color: #ffffff;
+    font-size: 25px;
+}
+@media screen and (max-width: 1024px){
+    .g-recaptcha {
+        transform: scale(0.78);
+        transform-origin: 0 0;
+        margin-left: 67px;
+    }
+}
+@media screen and (max-width: 768px){
+    .g-recaptcha {
+        transform: scale(0.68);
+        transform-origin: 0 0;
+        margin-left: 31px;
+    }
+}
+@media screen and (max-width: 425px){
+    .g-recaptcha {
+        transform: scale(0.68);
+        transform-origin: 0 0;
+        margin-left: 51px;
+    }
+}
+@media screen and (max-width: 375px){
+    .g-recaptcha {
+        transform: scale(0.58);
+        transform-origin: 0 0;
+        margin-left: 45px;
+    }
+}
+@media screen and (max-width: 320px){
+    .g-recaptcha {
+        transform: scale(0.48);
+        transform-origin: 0 0;
+        margin-left: 29px;
+    }
+}
+
+/*............................register page styles end...................................*/
+/*............................login page styles start...................................*/
+.login-form{
+    background: url("../images/Gradient-Blue-Color-and-Triangle-Polygon-Pattern-Background.jpg");
+    background-size: cover;
+    min-height: 400px;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    border-radius: 10px;
+    -webkit-box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    -moz-box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    font-family: MavenPro-Regular;
+}
+.login-form .input-field{
+    padding: 10px ;
+}
+.login-form input{
+    padding: 10px;
+    width: 65%;
+    border: none;
+    border-radius: 5px;
+}
+.main-login-bg{
+    background: #668aa0;
+    min-height: 95vh;
+}
+
+h1,h2,h3,h4,h5{
+    color: #ffffff;
+    font-family: AbrilFatface-Regular;
+}
+
+.main-login-page button{
+    margin-top: 10px;
+    padding: 10px 10px;
+    background: #00889c;
+    border: none;
+    border-radius: 5px;
+    width: 65%;
+    color: #ffffff;
+    font-size: 25px;
+}
+
+/*............................login page styles end...................................*/
+/*............................verify page styles start...................................*/
+.verify-form{
+    background: url("../images/Gradient-Blue-Color-and-Triangle-Polygon-Pattern-Background.jpg");
+    background-size: cover;
+    min-height: 400px;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    border-radius: 10px;
+    -webkit-box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    -moz-box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    box-shadow: 8px 11px 15px 0px rgba(52,54,92,1);
+    font-family: MavenPro-Regular;
+}
+.verify-form .input-field{
+    padding: 10px ;
+}
+.verify-form p{
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 30px;
+}
+.verify-form input{
+    padding: 15px;
+    width: 65%;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+}
+.main-verify-bg{
+    background: #668aa0;
+    min-height: 95vh;
+}
+
+.main-verify-page button{
+    margin-top: 10px;
+    padding: 10px 10px;
+    background: #00889c;
+    border: none;
+    border-radius: 5px;
+    width: 65%;
+    color: #ffffff;
+    font-size: 25px;
+}
+/*............................verify page styles end...................................*/
+/*............................advert page styles start...................................*/
+.main-advert-page{
+    background: url("../images/gradient-white-blue-linear-1920x1080-c2-ffffff-87cefa-a-150-f-14.svg");
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    font-family: MavenPro-Regular;
+    background-size: cover;
+}
+.main-advert-page h2{
+    color: #007b9c;
+    font-family: AbrilFatface-Regular;
+}
+.main-advert-page span{
+    font-family: MavenPro-Regular;
+    font-size: 17px;
+    color: #00959c;
+    font-weight: 500;
+}
+.main-advert-page .input-field{
+    margin-bottom: 20px;
+}
+.main-advert-page input{
+    width: 100%;
+    padding: 10px;
+    color: #000000;
+    border: 1px solid #007b9c;
+}
+.main-advert-page textarea{
+    width: 100%;
+    padding: 10px;
+    color: #000000;
+    border: 1px solid #007b9c;
+}
+.main-advert-page button{
+    margin-top: 10px;
+    padding: 10px 10px;
+    background: #00889c;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    color: #ffffff;
+    font-size: 20px;
+}
+.main-advert-page .view-box{
+    margin-top: 87px;
+    background: #00bbc3;
+    padding: 30px;
+    border-radius: 10px;
+
+    text-align: center;
+}
+.main-advert-page .view-box a{
+    text-decoration: none;
+    font-size: 27px;
+    color: #ffffff;
+}
+.main-advert-page .view-box a:hover{
+  font-size: 30px;
+}
+/*............................advert page styles end...................................*/
+/*............................view adverts page styles start...................................*/
+.my-advert-page{
+    background: url("../images/gradient-white-blue-linear-1920x1080-c2-ffffff-87cefa-a-150-f-14.svg");
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    font-family: MavenPro-Regular;
+    background-size: cover;
+}
+.my-advert-page h2{
+    color: #007b9c;
+    font-family: AbrilFatface-Regular;
+}
+.my-advert-page table{
+    font-size: 16px;
+    color: #00a8af;
+}
+.my-advert-page table th{
+    color: #00a8af;
+    font-size: 18px;
+}
+/*............................view adverts page styles end...................................*/
+/*............................search adverts page styles start..................................*/
+.search-box{
+    font-family: MavenPro-Regular;
+}
+.right{
+    text-align: right;
+}
+.search-box input{
+    padding: 10px;
+    border: 1px #007b9c solid;
+}
+.search-box button{
+    background: #007b9c;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+}
+.search-box select{
+    width: 100px;
+}
+@media screen and (max-width: 425px){
+    .search-box {
+        text-align: justify;
+    }
+    .right {
+         text-align: justify;
+    }
+}
+
+/*............................search adverts page styles end...................................*/
