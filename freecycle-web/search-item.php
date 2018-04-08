@@ -1,6 +1,7 @@
 <?php
 require_once 'header.php';
 require_once 'navbar.php';
+require_once './config/dbconnection.php';
 ?>
     <section class="my-advert-page">
         <div class="container">
