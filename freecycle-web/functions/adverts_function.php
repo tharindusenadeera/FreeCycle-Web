@@ -10,6 +10,7 @@ $price = "";
 $posting_date = "";
 $user_id = "";
 
+
 if (isset($_POST['submit'])) {
 
     if(isset($_POST['item_title'])){
@@ -32,7 +33,8 @@ if (isset($_POST['submit'])) {
         $posting_date = $_POST['posting_date'];
     }
 
-    $user_id = 1;
+    $user_id = $_SESSION["user_id"];
+
 
 //    $sql = "SELECT id FROM users WHERE username = '$_loggedInUsername'";
 //    $result = mysqli_query($conn, $sql);
@@ -47,26 +49,8 @@ if (isset($_POST['submit'])) {
 
 $sql = "INSERT INTO items(item_title,location,item_description,price,posting_date,user_id) VALUES ('$item_title','$location','$item_description','$price','$posting_date','$user_id')";
 mysqli_query($conn, $sql);
-header("Location: ../index.php"); // record inserted and redirected to home page
+$id = mysqli_insert_id($conn);
+header("Location: ../view-adverts.php?id=$id"); // record inserted and redirected to home page
 die();
 
-//image upload
-//if(isset($_POST["upload"])){
-//
-//    $item_id = mysqli_insert_id($conn);
-//    if ($item_id) {
-//        // insert image into image table
-//        $image_name = $_FILES["file"]["name"];
-//        if (!empty($image_name)) {
-//            $image_tmp = addslashes(file_get_contents($_FILES['my_image']['tmp_name'])); //Get the content of the image and then add slashes to it
-//            $sql = "INSERT INTO images (image, item_id, caption) VALUES('$image_tmp','$item_id', '$image_name')"; //Insert the image name and image content in image_table
-//            mysqli_query($conn, $sql);
-//        }
-//
-//        header("Location: index.php"); // record inserted and redirected to home page
-//        die();
-//    } else {
-//        $internal_error = "Error: " . $sql . " < br>" . mysqli_error($conn);
-//    }
-//}
 

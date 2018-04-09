@@ -9,7 +9,7 @@ $username = "";
 $email = "";
 $password = "";
 $captcha = "";
-$status = "";
+
 
 function generateRandomString($length = 5) {
     $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -21,7 +21,14 @@ function generateRandomString($length = 5) {
     return $randomString;
 }
 
-$activation_code = generateRandomString();
+require_once('../recaptcha.php');
+$privatekey = "6Lce6hoUAAAAAJ_ReODBIzNgG21SGHAfbYFX4ZZw";
+$resp = recaptcha_check_answer($privatekey,
+    $_SERVER["REMOTE_ADDR"],
+    $_POST["recaptcha_challenge_field"],
+    $_POST["recaptcha_response_field"]);
+
+
 
 if (isset($_POST['submit'])) {
 
@@ -37,32 +44,47 @@ if (isset($_POST['submit'])) {
         $password = md5($_POST['password']);
     }
 
-    $captcha = post_captcha($_POST['g-recaptcha-response']);
-    if(!res['sucsess']){
+    $status = 0;
+
+    $captcha = $_POST['g-recaptcha-response'];
+    if(!$resp = 'success'){
         echo '<p> Please go back and make sure you check the security Captcha box</p><br>';
     }
 
-    else
-        echo '<p> Captcha completed successfully</p>';
+
+
+    $activation_code = generateRandomString();
 
     $sql = "INSERT INTO users(username,email,password,status,activation_code) VALUES ('$username','$email','$password','$status','$activation_code')";
-    mysqli_query($conn, $sql);
+    if (mysqli_query($conn, $sql)){
+
+        header("Location: ../verify.php");
+
+        $_SESSION["user_id"] = mysqli_insert_id($conn);
+        $msg = "Your Activation Code Is\n".$activation_code;
+        // send email
+        $to = $email;
+        $subject = "Account verify";
+        $txt = $msg;
+        $headers = "From: Test@gmail.com" . "\r\n";
+
+        $res = mail($to,$subject,$txt,$headers);
+
+        if ($res==true){
+            session_start();
+            $_SESSION["username"] = $username;
+            $_SESSION["email"] = $email;
+            header("Location: ../verify.php");
+            exit();
+
+        }
+        else {
+            $internal_error = "Server encountered with a problem while trying to send the activation code through email. Please try again later.";
+        }
+
+    }
+    mysqli_close($conn);
 }
 
 
-$_SESSION["user_id"] = mysqli_insert_id($sql);
-echo "Activation Code : ".$code;
-//echo "stmt->insert_id ".$stmt->insert_id;
-$msg = "Your Activation Code Is\n".$code;
-//$stmt->close();
-close($conn);
-// send email
-$to = $email;
-$subject = "Account verify";
-$txt = $msg;
-$headers = "From: Test@gmail.com" . "\r\n";
 
-$res = mail($to,$subject,$txt,$headers);
-
-header("Location: verify.php");
-exit();
