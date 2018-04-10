@@ -10,6 +10,9 @@ if(!isset($_SESSION["username"])){
 }
 
 $item_id = $_GET['id'];
+$action = "";
+
+
 //image upload
 if(isset($_POST["upload"])){
 
@@ -27,12 +30,35 @@ if(isset($_POST["upload"])){
             mysqli_query($conn, $sql);
         }
 
-        header("Location: ./index.php"); // record inserted and redirected to home page
-        die();
+
+        //header("Location: ./index.php");
+        //die();
     } else {
         $internal_error = "Error: " . $sql . " < br>" . mysqli_error($conn);
     }
 }
+
+$id = mysqli_insert_id($conn);
+$sql =  "SELECT * FROM images where item_id ='$item_id'";
+$result = mysqli_query($conn,$sql);
+
+if(isset($_GET['action'])){
+
+    $action = $_GET['action'];
+
+    if($action = 2){
+        $sql = "DELETE FROM images where id = '$id'";
+        mysqli_query($conn,$sql);
+        //headers("Location: ./index.php");
+
+    }
+    die();
+    headers("Location: add-image.php");
+
+
+
+}
+
 
 
 ?>
@@ -61,7 +87,7 @@ if(isset($_POST["upload"])){
                         <td></td>
                         <td>
                             <input type='file' id="fileToUpload" name='fileToUpload'/>
-                            <input type='hidden' name='itemId'value=''/>
+                            <input type='hidden' name='itemId' value=''/>
                         </td>
                         <td><button type="submit" name="upload">Upload</button></td>
                     </tr>
@@ -74,10 +100,23 @@ if(isset($_POST["upload"])){
                 <th>Action</th>
                 </thead>
                 <tbody>
+                <?php
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_array($result)){
+                        //header("Content-type: image/png");
+                        //$image = $row['image'];
+                          echo '               
                 <tr>
-                    <td></td>
-                    <td><a>Delete</a></td>
-                </tr>
+                    <td>< data:image/jpeg;base64,' . base64_encode( $row['image'] ) .' </td>
+                    <td><a href="add-image.php?action=2">Delete</a></td>
+                </tr>';
+
+                
+                    }
+                }
+
+
+                 ?>
                 </tbody>
             </table>
         </div>

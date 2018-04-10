@@ -1,6 +1,7 @@
 <?php
 
 require_once 'header.php';
+
 if(!isset($_SESSION["username"])){
     header("Location: index.php");
     exit();
@@ -40,7 +41,7 @@ require_once 'navbar.php';
                 </div>
                 <div class="col-sm-4">
                     <div class="view-box">
-                        <p><a href="view-adverts.php">VIEW MY<br> ADVERTS <i class="fa fa-newspaper-o"></i></a></p>
+                        <p><a href="view-adverts2.php">VIEW MY<br> ADVERTS <i class="fa fa-newspaper-o"></i></a></p>
                     </div>
                 </div>
             </div>

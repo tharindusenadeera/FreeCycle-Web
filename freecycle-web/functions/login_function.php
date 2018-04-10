@@ -1,8 +1,10 @@
 <?php
 require_once "../config/dbconnection.php";
 
+
 $username = "";
 $email = "";
+$errors = array();
 
 if(isset($_POST['submit'])){
 
@@ -12,12 +14,33 @@ if(isset($_POST['submit'])){
         $username = $_POST['username'];
     }
 
+
     if (isset($_POST['password'])){
         $password = md5($_POST['password']);
     }
 
+//    if(count($errors) == 0){
+//
+//        $sql = "SELECT user_id,username,email,password,status from users where username='$username' and password='$password'";
+//        $result = mysqli_query($conn,$sql);
+//    }
+
     $sql = "SELECT user_id,username,email,password,status from users where username='$username' and password='$password'";
-    $result = mysqli_query($conn,$sql);
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result)>0){
+
+        $_SESSION["message"] = "Successfully logged in";
+        header("Location: ../index.php");
+    }
+
+    else {
+              $_SESSION["message"] = "Username and password are wrong";
+              header("Location: ../login.php?message='Username and password are wrong'");
+
+        }
+
+
+
 }
 
 //header("Location: ../index.php");
